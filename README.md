@@ -4,6 +4,12 @@
 
 A small Streamlit chatbot that sends conversation history to OpenAI's `gpt-3.5-turbo` model and streams the assistant response into the browser. It demonstrates the minimum loop needed for a conversational LLM UI: collect input, preserve session messages, call a model, and render the response.
 
+## Live Demo
+
+[Open the deployed Streamlit app](https://app-openai-chatbot-edkp7lvx2nwjnz4gatqk5u.streamlit.app/)
+
+The public app and UI were verified. Configure `OPENAI_API_KEY` in Streamlit Cloud **Settings → Secrets** before using the chat workflow.
+
 ## What It Demonstrates
 
 - Streamlit chat UI with `st.chat_input` and `st.chat_message`
@@ -39,7 +45,13 @@ pip install -r requirements.txt
 streamlit run streamlit_app.py
 ```
 
-The app asks for the API key in the UI. Never commit a real key or place one in the README.
+For local Streamlit secrets, create `.streamlit/secrets.toml`:
+
+```toml
+OPENAI_API_KEY = "your-api-key"
+```
+
+The app reads that secret first, then checks `OPENAI_API_KEY`, and finally offers the existing password input. Copy `.streamlit/secrets.toml.example` as a template. On Streamlit Community Cloud, add the same key under **Settings → Secrets**. Never commit a real key.
 
 ## Limitations and Future Improvements
 
